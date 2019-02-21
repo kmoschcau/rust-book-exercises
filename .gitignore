@@ -1,0 +1,5 @@
+# exclude target directories
+**/target/
+
+# exclude the Gutentags .notags file
+/.notags
