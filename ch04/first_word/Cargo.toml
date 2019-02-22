@@ -1,5 +1,5 @@
 [package]
-name = "coins"
+name = "first_word"
 version = "0.1.0"
 authors = ["Kai Moschcau <mail@kmoschcau.de>"]
 edition = "2018"

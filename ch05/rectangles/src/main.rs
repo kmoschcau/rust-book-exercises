@@ -4,7 +4,7 @@ struct Rectangle {
     height: u32,
 }
 
-impl Rectangle {
+impl  Rectangle {
     fn square(size: u32) -> Rectangle {
         Rectangle { width: size, height: size }
     }
@@ -19,25 +19,12 @@ impl Rectangle {
 }
 
 fn main() {
-    let rect = Rectangle {
-        width: 30,
-        height: 50,
-    };
-    let rect1 = Rectangle {
-        width: 10,
-        height: 40,
-    };
-    let rect2 = Rectangle {
-        width: 60,
-        height: 45,
-    };
+    let rect1 = Rectangle { width: 30, height: 50 };
+    let rect2 = Rectangle { width: 10, height: 40 };
+    let rect3 = Rectangle { width: 60, height: 45 };
 
-    println!("rect is {:?}", rect);
-
-    println!(
-        "The area of the recatangle is {} square pixels.",
-        rect.area()
-    );
-    println!("Can rect hold rect1? {}", rect.can_hold(&rect1));
-    println!("Can rect hold rect2? {}", rect.can_hold(&rect2));
+    println!("rect1 is {:?}", rect1);
+    println!("The area of rect1 is {} square pixels.", rect1.area());
+    println!("Can rect1 hold rect2? {}", rect1.can_hold(&rect2));
+    println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
 }
