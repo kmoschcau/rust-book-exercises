@@ -1,3 +1,5 @@
+use std::fmt;
+
 #[derive(Debug)]
 pub struct Rectangle {
     length: u32,
@@ -41,9 +43,31 @@ impl Guess {
     }
 }
 
+impl fmt::Display for Guess {
+  fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+    write!(f, "Guess: {}", self.value)
+  }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn add_two_and_two() {
+        assert_eq!(4, add_two(2));
+    }
+
+    #[test]
+    fn add_three_and_two() {
+      assert_eq!(5, add_two(3));
+    }
+
+    #[test]
+    #[ignore]
+    fn one_hundred() {
+      assert_eq!(102, add_two(100));
+    }
 
     #[test]
     fn larger_can_hold_smaller() {
