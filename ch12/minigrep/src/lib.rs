@@ -71,22 +71,26 @@ mod config_new {
     fn one_argument_return_err() {
         let vec = vec!["minigrep".to_string()];
 
-        assert_eq!(Err("not enough arguments"), Config::new(&vec));
+        assert_eq!(Err("not enough arguments"), Config::new(&vec, false));
     }
 
     #[test]
     fn two_arguments_return_err() {
         let vec = vec!["minigrep".to_string(), "foo".to_string()];
 
-        assert_eq!(Err("not enough arguments"), Config::new(&vec));
+        assert_eq!(Err("not enough arguments"), Config::new(&vec, false));
     }
 
     #[test]
     fn three_arguments_return_ok_with_config() {
         let vec = vec!["minigrep".to_string(), "foo".to_string(), "bar".to_string()];
 
-        assert_eq!(Ok(Config { query: "foo".to_string(), filename: "bar".to_string() }),
-                   Config::new(&vec));
+        assert_eq!(Ok(Config {
+                          query: "foo".to_string(),
+                          filename: "bar".to_string(),
+                          case_sensitive: false
+                      }),
+                   Config::new(&vec, false));
     }
 }
 
