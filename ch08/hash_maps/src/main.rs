@@ -26,13 +26,13 @@ fn main() {
         }
 
         let tokenize_result = Tokenizer::new(input).tokenize();
-        if tokenize_result.is_err() {
-            println!("Error: {}", tokenize_result.unwrap_err());
+        if let Err(message) = tokenize_result {
+            println!("Error: {}", message);
             continue;
         }
         let parse_result = Parser::new(tokenize_result.unwrap()).parse();
-        if parse_result.is_err() {
-            println!("Error: {}", parse_result.unwrap_err());
+        if let Err(message) = parse_result {
+            println!("Error: {}", message);
             continue;
         }
 
@@ -59,7 +59,7 @@ impl Company {
     fn add_name(&mut self, add_node: AddNode) {
         self.data
             .entry(add_node.department)
-            .or_insert(vec!())
+            .or_insert(vec![])
             .push(add_node.name);
     }
 
