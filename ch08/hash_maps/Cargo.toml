@@ -1,7 +1,7 @@
 [package]
 name = "hash_maps"
 version = "0.1.0"
-authors = ["Kai Moschcau <kai.moschcau@sabre.com>"]
+authors = ["Kai Moschcau <mail@kmoschcau.de>"]
 edition = "2018"
 
 [dependencies]
