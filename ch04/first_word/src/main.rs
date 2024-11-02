@@ -7,8 +7,8 @@ fn main() {
 fn first_word(s: &str) -> &str {
     let bytes = s.as_bytes();
 
-    for (i, &item) in bytes.iter().enumerate() {
-        if item == b' ' {
+    for (i, &byte) in bytes.iter().enumerate() {
+        if byte == b' ' {
             return &s[..i];
         }
     }
