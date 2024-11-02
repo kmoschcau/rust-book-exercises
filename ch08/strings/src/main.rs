@@ -6,10 +6,11 @@ fn main() {
 }
 
 fn pig_latin(text: &str) -> String {
-    let words: Vec<_> = text.to_string()
-                            .split_whitespace()
-                            .map(|word| pig_latin_word(word))
-                            .collect();
+    let words: Vec<_> = text
+        .to_string()
+        .split_whitespace()
+        .map(|word| pig_latin_word(word))
+        .collect();
     words.join(" ")
 }
 

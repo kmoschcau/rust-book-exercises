@@ -2,8 +2,7 @@ use std::env;
 use std::error::Error;
 use std::fs;
 
-#[derive(Debug)]
-#[derive(PartialEq)]
+#[derive(Debug, PartialEq)]
 pub struct Config {
     pub query: String,
     pub filename: String,
@@ -16,15 +15,19 @@ impl Config {
 
         let query = match args.next() {
             Some(arg) => arg,
-            None => return Err("Didn't get a query string")
+            None => return Err("Didn't get a query string"),
         };
 
         let filename = match args.next() {
             Some(arg) => arg,
-            None => return Err("Didn't get a file name")
+            None => return Err("Didn't get a file name"),
         };
 
-        Ok(Config { query, filename, case_sensitive: Self::case_sensitive(args) })
+        Ok(Config {
+            query,
+            filename,
+            case_sensitive: Self::case_sensitive(args),
+        })
     }
 
     fn case_sensitive(args: env::Args) -> bool {
@@ -56,16 +59,18 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
 }
 
 pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
-    contents.lines()
-            .filter(|line| line.contains(query))
-            .collect()
+    contents
+        .lines()
+        .filter(|line| line.contains(query))
+        .collect()
 }
 
 pub fn search_case_insensitive<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
     let lowercase_query = query.to_lowercase();
-    contents.lines()
-            .filter(|line| line.to_lowercase().contains(&lowercase_query))
-            .collect()
+    contents
+        .lines()
+        .filter(|line| line.to_lowercase().contains(&lowercase_query))
+        .collect()
 }
 
 #[cfg(test)]
@@ -81,10 +86,7 @@ safe, fast, productive.
 Pick three.
 Duct tape.";
 
-        assert_eq!(
-            vec!["safe, fast, productive."],
-            search(query, contents)
-        );
+        assert_eq!(vec!["safe, fast, productive."], search(query, contents));
     }
 }
 

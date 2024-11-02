@@ -43,7 +43,10 @@ impl Tokenizer {
 
     fn find_expression(&self, (token_type, regex): &(TokenType, Regex)) -> Option<Token> {
         let value = regex.find(&self.source)?.as_str().to_string();
-        Some(Token { token_type: token_type.clone(), value })
+        Some(Token {
+            token_type: token_type.clone(),
+            value,
+        })
     }
 }
 

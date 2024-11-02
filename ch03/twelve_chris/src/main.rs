@@ -1,6 +1,6 @@
 const NUMERALS: [&str; 12] = [
-    "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eigth", "ninth",
-    "tenth", "eleventh", "twelvth",
+    "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eigth", "ninth", "tenth",
+    "eleventh", "twelvth",
 ];
 
 const LINES: [&str; 12] = [

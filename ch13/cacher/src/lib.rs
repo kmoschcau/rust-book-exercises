@@ -1,14 +1,16 @@
 use std::collections::HashMap;
 
 pub struct Cacher<T>
-    where T: Fn(u32) -> u32
+where
+    T: Fn(u32) -> u32,
 {
     pub calculation: T,
     pub values: HashMap<u32, u32>,
 }
 
-impl <T> Cacher<T>
-    where T: Fn(u32) -> u32
+impl<T> Cacher<T>
+where
+    T: Fn(u32) -> u32,
 {
     pub fn new(calculation: T) -> Cacher<T> {
         Cacher {
@@ -20,7 +22,7 @@ impl <T> Cacher<T>
     pub fn value(&mut self, arg: u32) -> u32 {
         match self.values.get(&arg) {
             Some(value) => *value,
-            None => (self.calculation)(arg)
+            None => (self.calculation)(arg),
         }
     }
 }
